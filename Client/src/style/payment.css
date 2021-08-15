@@ -1,0 +1,22 @@
+.paymentContainer{
+    display:flex !important;
+    justify-content:center !important;
+    align-items:center !important;
+    border:1px solid lightgray;
+    padding:30px;
+    max-width:500px !important;
+    border-radius: 10px;
+    margin-top: 50px;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 20px whitesmoke;
+}
+
+.continue{
+    margin-top: 25px !important;
+    width: 250px !important;
+    background-color:rgb(19, 125, 187) !important;
+    font-weight: bold;
+    padding: 15px !important;
+    color:white !important;
+
+}

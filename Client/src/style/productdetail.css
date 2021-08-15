@@ -1,0 +1,79 @@
+.backsection_top{
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    text-decoration: none;
+}
+
+
+.reviewProduct{
+    object-fit: contain;
+    max-width: 500px;
+    max-height: 400px;
+    height: 400px;
+}
+
+.review{
+    color: blue;
+}
+
+.small{
+    object-fit: cover;
+    height: 60px;
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    justify-content: center;
+    display: flex;
+    padding: 2px;
+
+}
+
+.rightSection{
+    border: 1px solid lightgrey;
+    padding: 10px;
+    background-color: rgb(245, 242, 242);
+    border-radius: 5px;
+    max-width: max-content;
+}
+
+.select{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid lightblue;
+}
+
+.addToCart{
+    margin-top: 10px;
+   text-align: center;
+   background-color: rgb(250, 227, 95);
+   padding: 14px 35px;
+   width: 280px;
+   border: none;
+   font-weight: bold;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 15px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.addToCartdisabled{
+    margin-top: 10px;
+    text-align: center;
+    background-color: rgb(250, 227, 95);
+    padding: 14px 35px;
+    width: 280px;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor:not-allowed;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.stock{
+    color: green;
+}
+
+.outStock{
+    color: red;
+}

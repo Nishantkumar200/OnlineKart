@@ -1,37 +1,51 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import bodyParser, { json } from "body-parser";
-import {registerRouter,signInRoute,userRouter,} from "./Router/userRouter.js";
-import {AllProducts,GetOneProduct,productRouter,} from "./Router/productRouter.js";
+import bodyParser from "body-parser";
+import {
+  registerRouter,
+  signInRoute,
+  userRouter,
+} from "./Router/userRouter.js";
+import {
+  AllProducts,
+  GetOneProduct,
+  productRouter,
+} from "./Router/productRouter.js";
 import mongoose from "mongoose";
 
 import Order from "./Model/orderModel.js";
-import { OrderGetRoute, orderPayRoute, OrderPostRouter } from "./Router/orderRouter.js";
+import {
+  OrderGetRoute,
+  orderPayRoute,
+  OrderPostRouter,
+} from "./Router/orderRouter.js";
 
 const app = express();
 app.use(cors());
-app.use(json());
+app.use(bodyParser.json());
 
 dotenv.config();
 
-const db = mongoose.connect(
-  process.env.MONGODB_URL || "mongodb://localhost/amazona",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: true,
-  }
-);
+const db = mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: true,
+});
 
 db.then(console.log("successfully connected to the database")).catch((err) =>
   console.log(err)
 );
 
-app.get('/api/config/paypal',(req,res) =>{
-  res.send(process.env.PAYPAL_CLIENT_ID || "sb");
+app.get('/',(req,res)=>{
+  res.send("Server is Up now")
 })
+
+app.get("/api/config/paypal", (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID || "sb");
+});
+
 
 //User Routing
 app.use("/api/users", userRouter);
@@ -46,9 +60,9 @@ app.use("/api", AllProducts);
 // get one product data
 app.use("/api", GetOneProduct);
 
-app.use("/api",OrderPostRouter);
-app.use("/api",OrderGetRoute);
-app.use("/api",orderPayRoute);
+app.use("/api", OrderPostRouter);
+app.use("/api", OrderGetRoute);
+app.use("/api", orderPayRoute);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
